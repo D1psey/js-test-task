@@ -34,15 +34,16 @@ let helloWorld = () => {
 		});
 		$(".edit").click(() =>{
 			$(".spinner-border").animate({opacity:1}, 200);
-			let before = $(".name-"+event.target.dataset.id).text();
-			$(".message-text").val(before);			
+			var before = $(".name-"+event.target.dataset.id).text();
+			$(".message-text").val(before);
+			$(".message-text").attr("data-before", before);			
 		});
-		$(".edit-btn-confirm").click(() => {
+		$(".btn-edit-confirm").click(() => {
 			$(".spinner-border").animate({opacity:1}, 200);
 			let after = $('.message-text').val();
+			let before = $(".message-text").attr("data-before");
 			let parameters = {'before': before, 'after': after}
-			$.get("/editTask", parameters);
-			helloWorld();
+			$.get("/editTask", parameters).then(helloWorld())
 		});
 		$(".delete").click(() => {
 			$(".spinner-border").animate({opacity:1}, 200);

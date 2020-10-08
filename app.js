@@ -39,20 +39,7 @@ app.get('/addTask', (req, res) => {
 app.get('/editTask', (req, res) => {
 	const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 	client.connect().then(() => {
-		//
-		//
-		//
-		//
-		//
-		//
-		//
-		//
-		//
-		//
-		//
-		//
-		//
-		client.db("d1pseychatbot").collection("tasks").deleteOne({"_id": a}).then(() => {
+		client.db("d1pseychatbot").collection("tasks").updateOne({'name': req.query.before}, { $set: {'name': req.query.after}}).then(() => {
 			client.close();
 			res.send();
 		});				
