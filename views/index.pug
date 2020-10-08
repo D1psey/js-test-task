@@ -1,0 +1,51 @@
+link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh' crossorigin='anonymous')
+link(rel='stylesheet' href='/styles/style.css')
+
+
+nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
+    a.navbar-brand.mr-auto(href='#')
+        img.gimg(src='/images/calendar.png')  
+        span Task list      
+    form.form-inline
+      button.btn.my-2.my-sm-0(type='submit')
+        img.gimg.edit(src='/images/pencil.png')
+    form.form-inline
+      button.btn.my-2.my-sm-0(type='submit')
+        img.gimg.delete(src='/images/trash.png')
+  
+#exampleModal.modal.fade(tabindex='-1' aria-hidden='true')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        h5#exampleModalLabel.modal-title Input new value
+        button.close(type='button' data-dismiss='modal' aria-label='Close')
+          span(aria-hidden='true') &times;
+      .modal-body
+        form
+          .form-group
+            input(type='text').message-text.form-control
+      .modal-footer
+        button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+        button.btn.btn-primary.btn-edit-confirm(type='button') Confirm
+
+
+
+table.table.table-bordered.table-hover
+  thead.bg-light
+    tr
+      th(scope='col') 
+        img.gimg(src='/images/plus.png')
+      th(scope='col') 
+        form.form
+          input.form-control.addTaskText(type='text' placeholder="Start typing here to create a task...")
+      th(scope='col')
+        .input-group-append
+          button#basic-addon2.input-group-text.bg-dark.text-light.add Add Task  
+          .spinner-border(role='status')
+            span.sr-only Loading... 
+  tbody.greengerty
+
+script(src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js")
+script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js')
+script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js')
+script(src="/javascripts/main.js")

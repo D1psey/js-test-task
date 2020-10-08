@@ -1,0 +1,15 @@
+.gimg {
+	height: 2em;
+}
+
+.navhover {
+	visibility: hidden;	
+}
+
+#search {
+  text-align: center;
+  width:500px;
+  height: 70px;
+  font-size:3.5em;
+  border-radius:8px;
+}
