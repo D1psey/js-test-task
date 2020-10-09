@@ -17,9 +17,10 @@ app.get('/searching', function(req, res){
 });
 
 app.get('/getTasks', (req, res) => {
+	let project_id = new mongodb.ObjectID(req.query.id);
 	const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 	client.connect().then(() => {
-		client.db("d1pseychatbot").collection("tasks").find({}).toArray().then(i => {
+		client.db("d1pseychatbot").collection("tasks").find({'project_id': project_id}).toArray().then(i => {
 			client.close();
 			res.send(i);
 		});
@@ -53,6 +54,17 @@ app.get('/deleteTask', (req, res) => {
 		client.db("d1pseychatbot").collection("tasks").deleteOne({"_id": a}).then(() => {
 			client.close();
 			res.send();
+		});				
+	});
+});
+
+app.get('/getProjects', (req,res) => {
+	const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+	client.connect().then(() => {
+		let a = new mongodb.ObjectID(req.query._id);
+		client.db("d1pseychatbot").collection("projects").find({}).toArray().then(i => {
+			client.close();
+			res.send(i);
 		});				
 	});
 });
